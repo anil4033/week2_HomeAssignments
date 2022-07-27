@@ -1,9 +1,9 @@
 package week2.weeklyassignments.leafground;
 
-import java.time.Duration;
 
+import java.time.Duration;
+import java.util.List;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -20,9 +20,16 @@ public class ToyWithTables {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30)); //setting implicit wait
 		
 		//Number of columns
-
-		//Number of rows
+		List<WebElement> column = driver.findElements(By.tagName("th"));	// total column count
+		int columnIndex = column.size();
+		System.out.println("Total column available in the table is " + columnIndex);
 		
+		//Number of rows
+		List<WebElement> row = driver.findElements(By.tagName("tr"));	//total row count
+		int rowIndex = row.size();
+		System.out.println("Total rows available in the table is " + rowIndex);
+		
+	
 		//Get the progress value of 'Learn to interact with Elements'
 		String text = driver.findElement(By.xpath("//font[contains(text(),'interact ')]/following::font")).getText();
         System.out.println(text);
